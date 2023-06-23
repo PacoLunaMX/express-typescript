@@ -15,14 +15,13 @@ router.get("/:id", (req,res)=>{
 
 router.post('/', (req, res)=>{
     try{
-        const { date, weather, visibility, comment } = req.body
         const newDiaryEntry = toNewDiaryEntry(req.body)
 
         const addedDiaryEntry = diaryServices.addEntry(newDiaryEntry)
 
         res.json(addedDiaryEntry)
     }
-    catch(e){
+    catch(e:any){
         res.status(400).send(e.message)
     }
 
